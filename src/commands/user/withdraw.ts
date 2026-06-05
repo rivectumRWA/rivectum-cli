@@ -19,7 +19,7 @@ const HELP = `
 user withdraw — Withdraw assets from the vault
 
 USAGE
-  bun run cli user withdraw --assets <usdc> | --shares <n> [flags]
+  rivectum user withdraw --assets <usdc> | --shares <n> [flags]
 
 REQUIRED ENV
   RPC_URL, USDC_ADDRESS, VAULT_ADDRESS, USER_PRIVATE_KEY
@@ -34,8 +34,8 @@ FLAGS
   --help             Show this help
 
 EXAMPLES
-  bun run cli user withdraw --assets 100 --yes
-  bun run cli user withdraw --shares 1000 --yes
+  rivectum user withdraw --assets 100 --yes
+  rivectum user withdraw --shares 1000 --yes
 `;
 
 export default async function withdraw(_args: string[], flags: ParsedFlags): Promise<void> {

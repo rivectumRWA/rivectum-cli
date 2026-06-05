@@ -2,8 +2,8 @@
  * Smoke test — re-assert the agent's sign functions can be imported and called.
  */
 import { describe, test, expect } from "bun:test";
-import { hashIntent, signIntent } from "../../agent/src/sign";
-import type { Intent } from "../../agent/src/types";
+import { hashIntent, signIntent } from "../src/sign";
+import type { Intent } from "../src/types";
 import { generatePrivateKey, privateKeyToAccount } from "viem/accounts";
 
 describe("sign reuse contract (smoke)", () => {

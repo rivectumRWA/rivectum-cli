@@ -133,3 +133,20 @@ export const USDC_ABI = [
     inputs: [], outputs: [{ type: "string" }],
   },
 ] as const;
+
+export const ERC4626_ABI = [
+  {
+    type: "function",
+    name: "previewRedeem",
+    stateMutability: "view",
+    inputs: [{ name: "shares", type: "uint256" }],
+    outputs: [{ type: "uint256" }],
+  },
+  {
+    type: "function",
+    name: "convertToAssets",
+    stateMutability: "view",
+    inputs: [{ name: "shares", type: "uint256" }],
+    outputs: [{ type: "uint256" }],
+  },
+] as const;

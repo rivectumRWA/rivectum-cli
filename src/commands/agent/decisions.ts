@@ -14,7 +14,7 @@ const HELP = `
 agent decisions — List recent agent decisions
 
 USAGE
-  bun run cli agent decisions [flags]
+  rivectum agent decisions [flags]
 
 REQUIRED ENV
   DB_PATH

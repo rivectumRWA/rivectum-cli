@@ -2,7 +2,7 @@
  * Smoke test — re-assert the agent's strategy functions can be imported and called.
  */
 import { describe, test, expect } from "bun:test";
-import { pickAllocation, type ApySample } from "../../agent/src/strategy";
+import { pickAllocation, type ApySample } from "../src/strategy";
 
 describe("strategy reuse contract (smoke)", () => {
   test("empty samples → empty allocation", () => {

@@ -18,7 +18,7 @@ const HELP = `
 user approve — Approve USDC spending for the vault
 
 USAGE
-  bun run cli user approve --amount <usdc> | --max [flags]
+  rivectum user approve --amount <usdc> | --max [flags]
 
 REQUIRED ENV
   RPC_URL, USDC_ADDRESS, VAULT_ADDRESS, USER_PRIVATE_KEY
@@ -31,8 +31,8 @@ FLAGS
   --help           Show this help
 
 EXAMPLES
-  bun run cli user approve --amount 500 --yes
-  bun run cli user approve --max --yes --json
+  rivectum user approve --amount 500 --yes
+  rivectum user approve --max --yes --json
 `;
 
 export default async function approve(_args: string[], flags: ParsedFlags): Promise<void> {

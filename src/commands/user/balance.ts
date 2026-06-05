@@ -19,7 +19,7 @@ const HELP = `
 user balance — Show balances for a vault user
 
 USAGE
-  bun run cli user balance [flags]
+  rivectum user balance [flags]
 
 REQUIRED ENV
   RPC_URL, VAULT_ADDRESS, USDC_ADDRESS

@@ -18,7 +18,7 @@ const HELP = `
 user preview — Estimate deposit/redeem outcomes
 
 USAGE
-  bun run cli user preview --deposit <usdc> | --redeem <shares>
+  rivectum user preview --deposit <usdc> | --redeem <shares>
 
 REQUIRED ENV
   RPC_URL, VAULT_ADDRESS
@@ -30,8 +30,8 @@ FLAGS
   --help             Show this help
 
 EXAMPLES
-  bun run cli user preview --deposit 100
-  bun run cli user preview --redeem 50 --json
+  rivectum user preview --deposit 100
+  rivectum user preview --redeem 50 --json
 `;
 
 export default async function preview(_args: string[], flags: ParsedFlags): Promise<void> {

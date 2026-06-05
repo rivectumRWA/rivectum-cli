@@ -17,7 +17,7 @@ const HELP = `
 agent status — Vault snapshot
 
 USAGE
-  bun run cli agent status [flags]
+  rivectum agent status [flags]
 
 REQUIRED ENV
   RPC_URL, VAULT_ADDRESS

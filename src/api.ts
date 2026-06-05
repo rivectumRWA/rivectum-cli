@@ -17,7 +17,7 @@ export function getApiConfig(flags: ParsedFlags): ApiConfig | null {
   if (!flags.apiKey) return null;
   return {
     key: flags.apiKey,
-    url: flags.apiUrl ?? "http://localhost:3000",
+    url: flags.apiUrl ?? "https://app.rivectum.xyz",
   };
 }
 

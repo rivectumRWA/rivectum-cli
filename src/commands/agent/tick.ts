@@ -12,10 +12,10 @@ import { baseSepolia } from "viem/chains";
 import { loadEnv } from "../../env";
 import { makePublicClient, makeWalletClient } from "../../chain";
 import { VAULT_ABI } from "../../abi";
-import { ERC4626_ABI } from "../../../../agent/src/abi";
-import { hashIntent, signIntent } from "../../../../agent/src/sign";
-import { pickAllocation, type ApySample } from "../../../../agent/src/strategy";
-import type { Intent } from "../../../../agent/src/types";
+import { ERC4626_ABI } from "../../abi";
+import { hashIntent, signIntent } from "../../sign";
+import { pickAllocation, type ApySample } from "../../strategy";
+import type { Intent } from "../../types";
 import { log, label, c, ok, warn, err, jsonOk, jsonErr, printJson, formatBps, truncateHash, table } from "../../format";
 import type { ParsedFlags } from "../../cli";
 import { UserAbort } from "../../cli";
@@ -25,7 +25,7 @@ const HELP = `
 agent tick — Run one rebalance cycle (dry-run by default)
 
 USAGE
-  bun run cli agent tick [flags]
+  rivectum agent tick [flags]
 
 REQUIRED ENV
   RPC_URL, VAULT_ADDRESS, AGENT_PRIVATE_KEY, UNDERLYING_1, UNDERLYING_2
@@ -43,10 +43,10 @@ BEHAVIOUR
   --broadcast --yes         Probes, picks, signs, and sends the rebalance tx
 
 EXAMPLES
-  bun run cli agent tick                      # dry-run
-  bun run cli agent tick --broadcast          # preview, no tx (exit 2)
-  bun run cli agent tick --broadcast --yes    # full broadcast
-  bun run cli agent tick --json               # dry-run, JSON output
+  rivectum agent tick                      # dry-run
+  rivectum agent tick --broadcast          # preview, no tx (exit 2)
+  rivectum agent tick --broadcast --yes    # full broadcast
+  rivectum agent tick --json               # dry-run, JSON output
 `;
 
 export default async function tick(_args: string[], flags: ParsedFlags): Promise<void> {

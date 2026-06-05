@@ -10,6 +10,9 @@ import { version } from "../package.json";
 import agentStatus from "./commands/agent/status";
 import agentDecisions from "./commands/agent/decisions";
 import agentTick from "./commands/agent/tick";
+import agentAnalyze from "./commands/agent/analyze";
+import agentExplain from "./commands/agent/explain";
+import agentSuggest from "./commands/agent/suggest";
 import userPreview from "./commands/user/preview";
 import userBalance from "./commands/user/balance";
 import userApprove from "./commands/user/approve";
@@ -39,7 +42,7 @@ export interface ParsedFlags {
   broadcast: boolean;
   /** API key for thin-client mode (cli → api → chain). */
   apiKey: string | null;
-  /** API base URL (default http://localhost:3000). */
+  /** API base URL (default https://app.rivectum.xyz). */
   apiUrl: string | null;
   // arbitrary string flags
   raw: Map<string, string>;
@@ -121,7 +124,7 @@ ${"RivectumRWA CLI".toUpperCase()}
   Autonomous Allocation for Real-World Assets
 
 USAGE
-  bun run cli <namespace> <command> [flags]
+  rivectum <namespace> <command> [flags]
 
 NAMESPACES
   agent     Operator commands (rebalance, status, decisions)
@@ -132,19 +135,22 @@ GLOBAL FLAGS
   --yes        Skip confirmation prompts
   --help, -h   Show help for the command
   --api-key    API key for thin-client mode (cli → API → chain)
-  --api-url    API base URL (default http://localhost:3000)
+  --api-url    API base URL (default https://app.rivectum.xyz)
 
 EXAMPLES
-  bun run cli agent status
-  bun run cli agent tick
-  bun run cli agent tick --broadcast --yes
-  bun run cli agent decisions --limit 5
-  bun run cli user preview --deposit 100
-  bun run cli user balance
-  bun run cli user approve --max --yes
-  bun run cli user deposit --amount 100 --yes
+  rivectum agent status
+  rivectum agent tick
+  rivectum agent tick --broadcast --yes
+  rivectum agent decisions --limit 5
+  rivectum agent analyze
+  rivectum agent explain --id 1
+  rivectum agent suggest
+  rivectum user preview --deposit 100
+  rivectum user balance
+  rivectum user approve --max --yes
+  rivectum user deposit --amount 100 --yes
 
-Run 'bun run cli agent --help' or 'bun run cli user --help'
+Run 'rivectum agent --help' or 'rivectum user --help'
 for subcommand details.
 `;
 
@@ -156,7 +162,7 @@ type CommandHandler = (
 ) => Promise<void>;
 
 const NS_COMMANDS: Record<string, string[]> = {
-  agent: ["status", "decisions", "tick"],
+  agent: ["status", "decisions", "tick", "analyze", "explain", "suggest"],
   user: ["preview", "balance", "approve", "deposit", "withdraw"],
 };
 
@@ -166,7 +172,7 @@ async function showNamespaceHelp(ns: "agent" | "user"): Promise<void> {
   for (const c of cmds) {
     log(`  ${c}`);
   }
-  log(`\nRun 'bun run cli ${ns} <command> --help' for details.`);
+  log(`\nRun 'rivectum ${ns} <command> --help' for details.`);
 }
 
 export async function run(argv: string[]): Promise<void> {
@@ -207,6 +213,9 @@ export async function run(argv: string[]): Promise<void> {
       case "status": handler = agentStatus; break;
       case "decisions": handler = agentDecisions; break;
       case "tick": handler = agentTick; break;
+      case "analyze": handler = agentAnalyze; break;
+      case "explain": handler = agentExplain; break;
+      case "suggest": handler = agentSuggest; break;
     }
   } else if (namespace === "user") {
     switch (command) {

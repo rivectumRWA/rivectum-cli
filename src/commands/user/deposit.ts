@@ -19,7 +19,7 @@ const HELP = `
 user deposit — Deposit USDC into the vault
 
 USAGE
-  bun run cli user deposit --amount <usdc> [flags]
+  rivectum user deposit --amount <usdc> [flags]
 
 REQUIRED ENV
   RPC_URL, USDC_ADDRESS, VAULT_ADDRESS, USER_PRIVATE_KEY
@@ -33,8 +33,8 @@ FLAGS
   --help              Show this help
 
 EXAMPLES
-  bun run cli user deposit --amount 100 --yes
-  bun run cli user deposit --amount 500 --auto-approve --yes
+  rivectum user deposit --amount 100 --yes
+  rivectum user deposit --amount 500 --auto-approve --yes
 `;
 
 export default async function deposit(_args: string[], flags: ParsedFlags): Promise<void> {
@@ -99,7 +99,7 @@ export default async function deposit(_args: string[], flags: ParsedFlags): Prom
       log(ok("Approved."));
     } else {
       log(err(`Insufficient allowance: ${allowance} < ${amount}`));
-      log(label("Run: bun run cli user approve --amount " + amountRaw + " --yes"));
+      log(label("Run: rivectum user approve --amount " + amountRaw + " --yes"));
       process.exit(1);
     }
   }
