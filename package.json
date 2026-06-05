@@ -1,20 +1,30 @@
 {
   "name": "rivectum-cli",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "CLI for the RivectumRWA vault protocol — autonomous allocation for tokenized real-world assets on Base Sepolia.",
-  "keywords": ["rwa", "vault", "defi", "agent", "base", "sepolia", "real-world-assets", "allocation", "cli"],
+  "keywords": [
+    "rwa",
+    "vault",
+    "defi",
+    "agent",
+    "base",
+    "sepolia",
+    "real-world-assets",
+    "allocation",
+    "cli"
+  ],
   "author": "RivectumRWA",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/rivectumRWA/rivectum-cli"
+    "url": "git+https://github.com/rivectumRWA/rivectum-cli.git"
   },
   "type": "module",
   "bin": {
-    "rivectum": "./bin/rivectum.js"
+    "rivectum": "rivectum"
   },
   "files": [
-    "bin/",
+    "rivectum.js",
     "src/",
     "package.json",
     "tsconfig.json",
